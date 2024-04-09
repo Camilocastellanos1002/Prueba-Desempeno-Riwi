@@ -35,6 +35,7 @@ CREATE TABLE contratacion (
 
 SELECT *FROM empresa;
 SELECT *FROM vacante;
+DELETE FROM vacante WHERE id=1;
 SELECT *FROM coder;
 
 ALTER TABLE vacante
@@ -49,3 +50,6 @@ INSERT INTO empresa (nombre, sector, ubicacion, contacto) VALUES
 ("Epm","energia","sabaneta","3425437689"),
 ("Banco de Bogota","financiero","bogota","3134254361"),
 ("Index","cultura","guajira","3013155569");
+
+
+SELECT * FROM contratacion INNER JOIN coder ON coder.id = contratacion.coder_id  INNER JOIN vacante ON vacante.id = contratacion.vacante_id INNER JOIN empresa;
