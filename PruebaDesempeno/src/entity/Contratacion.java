@@ -15,8 +15,7 @@ public class Contratacion {
     public Contratacion() {
     }
 
-    public Contratacion(String fecha_aplicacion, String estado, float salario, int coder_id, Coder objCoder, int vacante_id, Vacante objVacante) {
-        this.fecha_aplicacion = fecha_aplicacion;
+    public Contratacion(String estado, float salario, int coder_id, Coder objCoder, int vacante_id, Vacante objVacante) {
         this.estado = estado;
         this.salario = salario;
         this.coder_id = coder_id;
