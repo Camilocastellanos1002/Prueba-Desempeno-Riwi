@@ -107,7 +107,7 @@ public class VacanteModel implements CRUD {
         List<Vacante> listVacantes = new ArrayList<>();
         Connection objConnection = ConfigDB.openConnection();
         try {
-            String sql = "SELECT * FROM vacante WHERE titulo like ?;";
+            String sql = "SELECT * FROM vacante INNER JOIN empresa  ON empresa.id = vacante.empresa_id WHERE titulo like ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setString(1,"%"+title+"%");
             ResultSet objResult = objPrepare.executeQuery();
@@ -121,6 +121,7 @@ public class VacanteModel implements CRUD {
                 objVacante.setDescripcion(objResult.getString("vacante.descripcion"));
                 objVacante.setDuracion(objResult.getString("vacante.duracion"));
                 objVacante.setEstado(objResult.getString("vacante.estado"));
+                objVacante.setTecnologia(objResult.getString("vacante.tecnologia"));
 
                 //llenar datos del objeto Empresa
                 objEmpresa.setId(objResult.getInt("empresa.id"));
@@ -146,7 +147,7 @@ public class VacanteModel implements CRUD {
         List<Vacante> listVacantes = new ArrayList<>();
         Connection objConnection = ConfigDB.openConnection();
         try {
-            String sql = "SELECT * FROM vacante WHERE tecnologia like ?;";
+            String sql = "SELECT * FROM vacante INNER JOIN empresa  ON empresa.id = vacante.empresa_id WHERE tecnologia like ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setString(1,"%"+title+"%");
             ResultSet objResult = objPrepare.executeQuery();
@@ -160,6 +161,7 @@ public class VacanteModel implements CRUD {
                 objVacante.setDescripcion(objResult.getString("vacante.descripcion"));
                 objVacante.setDuracion(objResult.getString("vacante.duracion"));
                 objVacante.setEstado(objResult.getString("vacante.estado"));
+                objVacante.setTecnologia(objResult.getString("vacante.tecnologia"));
 
                 //llenar datos del objeto Empresa
                 objEmpresa.setId(objResult.getInt("empresa.id"));
@@ -183,7 +185,7 @@ public class VacanteModel implements CRUD {
         List<Vacante> listVacantes = new ArrayList<>();
         Connection objConnection = ConfigDB.openConnection();
         try {
-            String sql = "SELECT * FROM vacante WHERE estado= 'ACTIVO';";
+            String sql = "SELECT * FROM vacante INNER JOIN empresa  ON empresa.id = vacante.empresa_id WHERE estado= 'ACTIVO';";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             ResultSet objResult = objPrepare.executeQuery();
             while (objResult.next()){
@@ -195,7 +197,6 @@ public class VacanteModel implements CRUD {
                 objVacante.setTitulo(objResult.getString("vacante.titulo"));
                 objVacante.setDescripcion(objResult.getString("vacante.descripcion"));
                 objVacante.setDuracion(objResult.getString("vacante.duracion"));
-                objVacante.setEstado(objResult.getString("vacante.estado"));
 
                 //llenar datos del objeto Empresa
                 objEmpresa.setId(objResult.getInt("empresa.id"));
@@ -221,7 +222,7 @@ public class VacanteModel implements CRUD {
         List<Vacante> listVacantes = new ArrayList<>();
         Connection objConnection = ConfigDB.openConnection();
         try {
-            String sql = "SELECT * FROM vacante WHERE estado= 'INACTIVO';";
+            String sql = "SELECT * FROM vacante INNER JOIN empresa  ON empresa.id = vacante.empresa_id WHERE estado= 'INACTIVO';";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             ResultSet objResult = objPrepare.executeQuery();
             while (objResult.next()){
@@ -267,7 +268,7 @@ public class VacanteModel implements CRUD {
         //try
         try {
             //sentencia sql
-            String sql = "UPDATE vacante SET titulo=?, descripcion=?,duracion=?,estado=?,empresa_id=?,tecnologia=?;";
+            String sql = "UPDATE vacante SET titulo=?, descripcion=?,duracion=?,estado=?,empresa_id=?,tecnologia=? WHERE id=?;";
             //preparamos statement
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             //dar valores a los ?
@@ -277,6 +278,7 @@ public class VacanteModel implements CRUD {
             objPrepare.setString(4,objVacante.getEstado());
             objPrepare.setInt(5,objVacante.getEmpresa_id());
             objPrepare.setString(6,objVacante.getTecnologia());
+            objPrepare.setInt(7,objVacante.getId());
 
             //ejecutar el query
             int totalRowAffected = objPrepare.executeUpdate();

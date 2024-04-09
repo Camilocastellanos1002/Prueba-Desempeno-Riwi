@@ -150,4 +150,56 @@ public class CoderModel implements CRUD {
         //11. devolver estado de bandera
         return isDelete;
     }
+    public List<Coder> findByClan(String var){
+        List<Coder> listCoder = new ArrayList<>();
+        Connection objConnection = ConfigDB.openConnection();
+        try {
+            String sql = "SELECT * FROM coder WHERE clan like ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+            objPrepare.setString(1,"%"+var+"%");
+            ResultSet objResult = objPrepare.executeQuery();
+            while (objResult.next()){
+                Coder objCoder =new Coder();
+
+                objCoder.setId(objResult.getInt("id"));
+                objCoder.setNombre(objResult.getString("nombre"));
+                objCoder.setApellidos(objResult.getString("apellidos"));
+                objCoder.setDocumento(objResult.getString("documento"));
+
+                listCoder.add(objCoder);
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error al encontrar coder por clan: "+e.getMessage());
+        }
+        ConfigDB.closeConnection();
+        return listCoder;
+    }
+
+
+    public List<Coder> findByTecno(String var){
+        List<Coder> listCoder = new ArrayList<>();
+        Connection objConnection = ConfigDB.openConnection();
+        try {
+            String sql = "SELECT * FROM coder WHERE tecnologia like ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+            objPrepare.setString(1,"%"+var+"%");
+            ResultSet objResult = objPrepare.executeQuery();
+            while (objResult.next()){
+                Coder objCoder =new Coder();
+
+                objCoder.setId(objResult.getInt("id"));
+                objCoder.setNombre(objResult.getString("nombre"));
+                objCoder.setApellidos(objResult.getString("apellidos"));
+                objCoder.setDocumento(objResult.getString("documento"));
+
+                listCoder.add(objCoder);
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error al encontrar coder por tecnologia: "+e.getMessage());
+        }
+        ConfigDB.closeConnection();
+        return listCoder;
+    }
 }

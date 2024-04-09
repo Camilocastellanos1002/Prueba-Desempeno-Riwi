@@ -77,4 +77,23 @@ public class CoderController {
         );
         instanciarModeloCoder().delete(objSelected);
     }
+
+    public static void getByClan(){
+        String clan = JOptionPane.showInputDialog(null,"Ingrese el clan a buscar: ");
+        CoderModel objEspecialidadModel = new CoderModel();
+        String listString = "Coincidencias: \n";
+        for (Coder i:objEspecialidadModel.findByClan(clan)){
+            listString+=i.toString()+"\n";
+        }
+        JOptionPane.showMessageDialog(null,listString);
+    }
+    public static void getByTecno(){
+        String tecno = JOptionPane.showInputDialog(null,"Ingrese el tecnologia a buscar: ");
+        CoderModel objEspecialidadModel = new CoderModel();
+        String listString = "Coincidencias: \n";
+        for (Coder i:objEspecialidadModel.findByTecno(tecno)){
+            listString+=i.toString()+"\n";
+        }
+        JOptionPane.showMessageDialog(null,listString);
+    }
 }

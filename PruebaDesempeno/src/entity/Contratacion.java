@@ -92,7 +92,7 @@ public class Contratacion {
     public String toString() {
         return "Contratacion: \n" +
                 "Vacante: " + objVacante.getTitulo() + ", descripcion: "+ objVacante.getDescripcion() +
-                "\nEmpresa: " + objVacante.getObjEmpresa().getNombre() + ", ubicacion: " + objVacante.getObjEmpresa().getUbicacion() +
-                "fecha de aplicacion: " + fecha_aplicacion + ' ' +  ", estado: " + estado + ' ' + ", salario: " + salario +"\n";
+                "\nEmpresa: " + objVacante.getObjEmpresa().getNombre() + ", ubicacion: " + objVacante.getObjEmpresa().getUbicacion()+ "\n" +
+                "fecha: " + fecha_aplicacion + ' ' +  "\nestado: " + estado + ' ' + ", salario: " + salario +"\n";
     }
 }

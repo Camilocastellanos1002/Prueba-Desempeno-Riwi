@@ -27,13 +27,33 @@ public class Main {
                             2.Ingresar nuevo Coder
                             3.Actualizar informacion Coder
                             4.Eliminar Coder
-                            5.
-                            6.Salir
+                            5.Salir
                             Seleccione una opcion: 
                             """);
                         switch (option1){
                             case "1":
-                                CoderController.getAll();
+                                String option4 ="";
+                                do {
+                                    option4= JOptionPane.showInputDialog("""
+                                    Menu: \n
+                                    1.Mostrar todos los Coders
+                                    2.Mostrar Coder por clan
+                                    3.Mostrar Coder por tecnologia
+                                    4.Salir
+                                    Seleccione una opcion: 
+                                    """);
+                                    switch (option4){
+                                        case "1":
+                                            CoderController.getAll();
+                                        break;
+                                        case "2":
+                                            CoderController.getByClan();
+                                        break;
+                                        case "3":
+                                            CoderController.getByTecno();
+                                        break;
+                                    }
+                                }while (!option4.equals("4"));
                             break;
                             case "2":
                                 CoderController.create();
@@ -44,11 +64,8 @@ public class Main {
                             case "4":
                                 CoderController.delete();
                             break;
-                            case "5":
-
-                            break;
                         }
-                    }while (!option1.equals("6"));
+                    }while (!option1.equals("5"));
                 break;
                 case "2":
                     String option2 = "";
@@ -71,8 +88,7 @@ public class Main {
                                     1.Mostrar todas las vacantes
                                     2.Mostrar por titulo
                                     3.Mostrar por tecnologia
-                                    4.Mostrar por estado Activo
-                                    5.Salir
+                                    4.Salir
                                     Seleccione una opcion: 
                                     """);
                                     switch (option1_2){
@@ -85,11 +101,8 @@ public class Main {
                                         case "3":
                                             VacanteController.getByTecnology();
                                         break;
-                                        case "4":
-                                            VacanteController.getActiveStatus();
-                                        break;
                                     }
-                                }while (!option1_2.equals("5"));
+                                }while (!option1_2.equals("4"));
                             break;
                             case "2":
                                 VacanteController.create();

@@ -120,12 +120,11 @@ public class VacanteController {
                 options[0]               //opcion por defecto
         );
         //valores actualizar
-        String titulo = JOptionPane.showInputDialog(null,"Ingrese el nuevo titulo de la vacante: ",objVacante.getTitulo());
-        String descripcion = JOptionPane.showInputDialog(null,"Ingrese la nueva descripcion de la vacante: ",objVacante.getDescripcion());
-        String duracion = JOptionPane.showInputDialog(null,"Ingrese la nueva duracion de la vacante: ",objVacante.getDuracion());
-        String estado = JOptionPane.showInputDialog(null,"Ingrese el nuevo estado de la vacante: ",objVacante.getEstado());
-        String tecnologia = JOptionPane.showInputDialog(null,"Ingrese de nuevo la tecnologia requerida para la vacante: ",objVacante.getTecnologia());
-
+        objVacante.setTitulo(JOptionPane.showInputDialog(null,"Ingrese el nuevo titulo de la vacante: ",objVacante.getTitulo()));
+        objVacante.setDescripcion(JOptionPane.showInputDialog(null,"Ingrese la nueva descripcion de la vacante: ",objVacante.getDescripcion()));
+        objVacante.setDuracion(JOptionPane.showInputDialog(null,"Ingrese la nueva duracion de la vacante: ",objVacante.getDuracion()));
+        objVacante.setEstado(JOptionPane.showInputDialog(null,"Ingrese el nuevo estado de la vacante: ",objVacante.getEstado()));
+        objVacante.setTecnologia(JOptionPane.showInputDialog(null,"Ingrese de nuevo la tecnologia requerida para la vacante: ",objVacante.getTecnologia()));
 
 
         Object[] optionEmpresa = Utils.listToArray(EmpresaController.instanciaModeloEmpresa().findEmpresa());
@@ -140,7 +139,10 @@ public class VacanteController {
                 optionEmpresa,                 //opciones
                 optionEmpresa[0]               //opcion por defecto
         );
-        instanciarModeloVacante().update(new Vacante(titulo,descripcion,duracion,estado,tecnologia,objEmpresa.getId(),objEmpresa));
+        objVacante.setObjEmpresa(objEmpresa);
+        objVacante.setEmpresa_id(objEmpresa.getId());
+
+        instanciarModeloVacante().update(objVacante);
     }
 
 }

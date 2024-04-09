@@ -47,20 +47,22 @@ public class ContratacionController {
                 optionVacantes,
                 optionVacantes[0]
         );
+        //if (vacanteSeleccionado.getEstado() == "ACTIVO"){
+            //selector de coder
+            Coder coderSeleccionado = (Coder) JOptionPane.showInputDialog(
+                    null,
+                    "Seleccione el coder para la contratacion: ",
+                    "",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    optionCoder,
+                    optionCoder[0]
+            );
+            //creando la instancia de la cita
+            instanciaModeloContratacion().create(new Contratacion(vacanteSeleccionado.getEstado(),salario,coderSeleccionado.getId(),coderSeleccionado,vacanteSeleccionado.getId(),vacanteSeleccionado));
+            vacanteSeleccionado.setEstado("INACTIVO");
+        //}
 
-        //selector de coder
-        Coder coderSeleccionado = (Coder) JOptionPane.showInputDialog(
-                null,
-                "Seleccione el coder para la contratacion: ",
-                "",
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                optionCoder,
-                optionCoder[0]
-        );
-
-        //creando la instancia de la cita
-        instanciaModeloContratacion().create(new Contratacion(vacanteSeleccionado.getEstado(),salario,coderSeleccionado.getId(),coderSeleccionado,vacanteSeleccionado.getId(),vacanteSeleccionado));
     }
 
 

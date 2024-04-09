@@ -22,7 +22,7 @@ public class ContratacionModel implements CRUD {
         //try
         try {
             //sentencia sql
-            String sql = "INSERT INTO contratacion (estado,salario,vacante_id,coder_id) VALUES (?,?,?,?,?);";
+            String sql = "INSERT INTO contratacion (estado,salario,vacante_id,coder_id) VALUES (?,?,?,?);";
             //preparar statement y devolucion de llaves
             PreparedStatement objPrepare = objConnection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             //dar valores a  ?
@@ -35,7 +35,7 @@ public class ContratacionModel implements CRUD {
             //obtener llaves generadas
             ResultSet objResult = objPrepare.getGeneratedKeys();
             //mientras haya un registro
-            while (objResult.next()){
+            if (objResult.next()){
                 //agregar id
                 objContratacion.setId(objResult.getInt(1));
             }

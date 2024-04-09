@@ -53,3 +53,7 @@ INSERT INTO empresa (nombre, sector, ubicacion, contacto) VALUES
 
 
 SELECT * FROM contratacion INNER JOIN coder ON coder.id = contratacion.coder_id  INNER JOIN vacante ON vacante.id = contratacion.vacante_id INNER JOIN empresa;
+SELECT * FROM vacante INNER JOIN empresa  ON empresa.id = vacante.empresa_id WHERE estado= 'ACTIVO';
+
+SELECT * FROM contratacion;
+DELETE FROM contratacion WHERE id=3;
