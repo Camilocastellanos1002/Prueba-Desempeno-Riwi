@@ -83,5 +83,25 @@ public class ContratacionController {
 
     public static void update(){
 
+        //selector
+        Object[] optionContrataciones = Utils.listToArray(ContratacionController.instanciaModeloContratacion().findAll());
+        //menu
+        Contratacion contratacionSeleccionada = (Contratacion) JOptionPane.showInputDialog(
+                null,
+                "Seleccione la contratacion a actualizar: ",
+                "",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                optionContrataciones,
+                optionContrataciones[0]
+        );
+        if(JOptionPane.showInputDialog(null,"Deseea cambiar el estado de la contratacion: (SI o NO): ").equals("NO")){
+            contratacionSeleccionada.setEstado("ACTIVO");
+        }else {
+            contratacionSeleccionada.setEstado("INACTIVO");
+            contratacionSeleccionada.getObjVacante().setEstado("ACTIVO");
+        }
+        instanciaModeloContratacion().update(contratacionSeleccionada);
+
     }
 }

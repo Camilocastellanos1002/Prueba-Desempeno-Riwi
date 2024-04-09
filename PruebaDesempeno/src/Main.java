@@ -136,7 +136,7 @@ public class Main {
                                 ContratacionController.create();
                             break;
                             case "3":
-
+                                ContratacionController.update();
                             break;
                             case "4":
                                 ContratacionController.delete();
