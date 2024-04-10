@@ -165,6 +165,9 @@ public class CoderModel implements CRUD {
                 objCoder.setNombre(objResult.getString("nombre"));
                 objCoder.setApellidos(objResult.getString("apellidos"));
                 objCoder.setDocumento(objResult.getString("documento"));
+                objCoder.setCohorte(objResult.getInt("cohorte"));
+                objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
 
                 listCoder.add(objCoder);
             }
@@ -181,7 +184,7 @@ public class CoderModel implements CRUD {
         List<Coder> listCoder = new ArrayList<>();
         Connection objConnection = ConfigDB.openConnection();
         try {
-            String sql = "SELECT * FROM coder WHERE tecnologia like ?;";
+            String sql = "SELECT * FROM coder WHERE cohorte like ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             objPrepare.setString(1,"%"+var+"%");
             ResultSet objResult = objPrepare.executeQuery();
@@ -192,6 +195,9 @@ public class CoderModel implements CRUD {
                 objCoder.setNombre(objResult.getString("nombre"));
                 objCoder.setApellidos(objResult.getString("apellidos"));
                 objCoder.setDocumento(objResult.getString("documento"));
+                objCoder.setCohorte(objResult.getInt("cohorte"));
+                objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
 
                 listCoder.add(objCoder);
             }

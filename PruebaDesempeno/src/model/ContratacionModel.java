@@ -126,7 +126,7 @@ public class ContratacionModel implements CRUD {
         try {
             //4. sentencia sql
             // linea de sql que hace la consulta y une dos tablas
-            String sql = "SELECT * FROM contratacion INNER JOIN coder ON coder.id = contratacion.coder_id  INNER JOIN vacante ON vacante.id = contratacion.vacante_id INNER JOIN empresa;";
+            String sql = "SELECT * FROM contratacion INNER JOIN coder ON coder.id = contratacion.coder_id  INNER JOIN vacante ON vacante.id = contratacion.vacante_id INNER JOIN empresa ON empresa.id=vacante.empresa_id;";
             //5. crear statement
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
             //6. se ejecuta el query

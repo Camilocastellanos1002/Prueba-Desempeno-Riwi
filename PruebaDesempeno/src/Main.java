@@ -38,7 +38,7 @@ public class Main {
                                     Menu: \n
                                     1.Mostrar todos los Coders
                                     2.Mostrar Coder por clan
-                                    3.Mostrar Coder por tecnologia
+                                    3.Mostrar Coder por corte
                                     4.Salir
                                     Seleccione una opcion: 
                                     """);

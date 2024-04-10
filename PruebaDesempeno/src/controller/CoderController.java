@@ -88,7 +88,7 @@ public class CoderController {
         JOptionPane.showMessageDialog(null,listString);
     }
     public static void getByTecno(){
-        String tecno = JOptionPane.showInputDialog(null,"Ingrese el tecnologia a buscar: ");
+        String tecno = JOptionPane.showInputDialog(null,"Ingrese el corte a buscar: ");
         CoderModel objEspecialidadModel = new CoderModel();
         String listString = "Coincidencias: \n";
         for (Coder i:objEspecialidadModel.findByTecno(tecno)){
